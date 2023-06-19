@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetApiPractice.API", "AspNetApiPractice.API\AspNetApiPractice.API.csproj", "{50545C87-0A77-45B5-BB0A-92F730134249}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetApiPractice.Data", "AspNetApiPractice.Data\AspNetApiPractice.Data.csproj", "{82607506-B286-4A06-9770-E5CA6357A1E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetApiPractice.Models", "AspNetApiPractice.Models\AspNetApiPractice.Models.csproj", "{D7DD9042-8AE9-4EBF-89D0-881FB5031738}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetApiPractice.Helpers", "AspNetApiPractice.Helpers\AspNetApiPractice.Helpers.csproj", "{71A8E3A8-18DC-48CB-9444-1021A6DD6268}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetApiPractice.Services", "AspNetApiPractice.Services\AspNetApiPractice.Services.csproj", "{0539A09F-3DC1-4CAA-BC25-FD97AD8580CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetApiPractice.ViewModels", "AspNetApiPractice.ViewModels\AspNetApiPractice.ViewModels.csproj", "{A49777F7-77C4-4AA4-A33C-DFA2BCF453F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50545C87-0A77-45B5-BB0A-92F730134249}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50545C87-0A77-45B5-BB0A-92F730134249}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50545C87-0A77-45B5-BB0A-92F730134249}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50545C87-0A77-45B5-BB0A-92F730134249}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82607506-B286-4A06-9770-E5CA6357A1E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82607506-B286-4A06-9770-E5CA6357A1E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82607506-B286-4A06-9770-E5CA6357A1E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82607506-B286-4A06-9770-E5CA6357A1E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7DD9042-8AE9-4EBF-89D0-881FB5031738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7DD9042-8AE9-4EBF-89D0-881FB5031738}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7DD9042-8AE9-4EBF-89D0-881FB5031738}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7DD9042-8AE9-4EBF-89D0-881FB5031738}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71A8E3A8-18DC-48CB-9444-1021A6DD6268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71A8E3A8-18DC-48CB-9444-1021A6DD6268}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71A8E3A8-18DC-48CB-9444-1021A6DD6268}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71A8E3A8-18DC-48CB-9444-1021A6DD6268}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0539A09F-3DC1-4CAA-BC25-FD97AD8580CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0539A09F-3DC1-4CAA-BC25-FD97AD8580CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0539A09F-3DC1-4CAA-BC25-FD97AD8580CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0539A09F-3DC1-4CAA-BC25-FD97AD8580CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A49777F7-77C4-4AA4-A33C-DFA2BCF453F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A49777F7-77C4-4AA4-A33C-DFA2BCF453F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A49777F7-77C4-4AA4-A33C-DFA2BCF453F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A49777F7-77C4-4AA4-A33C-DFA2BCF453F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D6FF8644-1800-48A3-83A2-5B5A914FC157}
+	EndGlobalSection
+EndGlobal
