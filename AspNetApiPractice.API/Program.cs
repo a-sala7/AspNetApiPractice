@@ -5,6 +5,7 @@ using AspNetApiPractice.Models;
 using AspNetApiPractice.Models.Shop;
 using AspNetApiPractice.Models.User;
 using AspNetApiPractice.Services.Shop;
+using AspNetApiPractice.Services.User;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,6 +30,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
 
 builder.Services.AddScoped<IRepository<Product>, Repository<Product>>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddScoped<IRepository<BaseModel>, BaseModelRepository>();
 
