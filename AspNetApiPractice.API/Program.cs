@@ -1,4 +1,6 @@
-﻿using AspNetApiPractice.API.Utility;
+﻿using AspNetApiPractice.API.Config;
+using AspNetApiPractice.API.Middleware;
+using AspNetApiPractice.API.Utility;
 using AspNetApiPractice.Data;
 using AspNetApiPractice.Data.Repository;
 using AspNetApiPractice.Models;
@@ -12,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.AddSerilogLogging();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -34,6 +37,9 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddScoped<IRepository<BaseModel>, BaseModelRepository>();
 
+builder.Services.AddTransient<GlobalExceptionHandlerMiddleware>();
+
+
 var app = builder.Build();
 
 DbInitializer.Initialize(app);
@@ -48,6 +54,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 
 app.MapControllers();
 
