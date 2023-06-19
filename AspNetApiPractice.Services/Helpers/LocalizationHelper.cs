@@ -6,7 +6,7 @@ namespace AspNetApiPractice.Services.Helpers;
 
 public static class LocalizationHelper
 {
-    public static void LocalizeProperties(ILocalizable src, ref object target, string langCode)
+    public static void LocalizeProperties(ILocalizable src, object target, string langCode)
     {
         if (src is null || target is null)
             return;

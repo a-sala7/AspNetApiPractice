@@ -26,12 +26,12 @@ namespace AspNetApiPractice.Services.Shop
                 Id = p.Id,
                 CategoryId = p.CategoryId,
                 Price = p.Price,
-            });
+            }).ToArray();
             for(int i = 0; i < products.Count(); i++)
             {
                 LocalizationHelper.LocalizeProperties(
                     src: products.ElementAt(i), 
-                    target: result.ElementAt(i), 
+                    target: result[i], 
                     HttpRequestHelper.GetHeaderValue("lang")
                 );
             }
