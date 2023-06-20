@@ -22,7 +22,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<Entities>(opt =>
 {
-    opt.UseSqlServer("Data Source=ASRock\\SQLEXPRESS;Initial Catalog=ApiPractice;Integrated Security=True;TrustServerCertificate=True;");
+    opt.UseSqlServer(builder.Configuration.GetValue<string>("DefaultConnection"));
 });
 builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
 {
