@@ -8,7 +8,7 @@ builder.AddSerilogLogging();
 builder.Services.ConfigureControllersWithModelValidation();
 builder.Services.ConfigureSwagger();
 builder.Services.AddDb(builder.Configuration.GetValue<string>("DefaultConnection"));
-builder.Services.ConfigureIdentity();
+builder.Services.ConfigureIdentity(builder.Configuration);
 builder.Services.AddRepositoriesAndServices();
 builder.Services.AddGlobalExceptionHandler();
 
@@ -26,6 +26,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseGlobalExceptionHandler();

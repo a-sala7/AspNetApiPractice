@@ -22,6 +22,7 @@ public static class RepositoryAndServiceConfig
         services.AddScoped<ICategoryService, CategoryService>();
 
         services.AddScoped<IRepository<WishlistsProducts>, Repository<WishlistsProducts>>();
+        services.AddScoped<IWishListService, WishListService>();
 
         services.AddScoped<IUserService, UserService>();
         

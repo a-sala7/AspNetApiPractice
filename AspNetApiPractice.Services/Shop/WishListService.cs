@@ -49,7 +49,7 @@ public class WishListService : IWishListService
     {
         IEnumerable<int> prodIds = (await _wishlistsProductsRepository.All(x => x.UserId == userId)).Select(x => x.ProductId);
         IEnumerable<Product> products = await _productRepository.All(p => prodIds.Contains(p.Id));
-        var result = products.Select(MappingExpression).ToArray();
+        ProductViewModel[] result = products.Select(MappingExpression).ToArray();
 
         LocalizationHelper.LocalizeProperties(
             src: products,

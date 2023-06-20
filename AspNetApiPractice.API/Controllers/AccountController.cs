@@ -22,5 +22,11 @@ namespace AspNetApiPractice.API.Controllers
             await _userService.CreateUser(command);
             return Ok();
         }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login(LoginCredentials loginCredentials)
+        {
+            return Ok(await _userService.Login(loginCredentials));
+        }
     }
 }

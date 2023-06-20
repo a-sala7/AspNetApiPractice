@@ -2,7 +2,7 @@ namespace AspNetApiPractice.ViewModels.Shop;
 
 public class WishListViewModel
 {
-    IEnumerable<ProductViewModel> Products { get; }
+    public IEnumerable<ProductViewModel> Products { get; set; }
 
     public WishListViewModel(IEnumerable<ProductViewModel> products)
     {

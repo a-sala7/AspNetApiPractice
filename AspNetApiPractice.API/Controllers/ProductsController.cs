@@ -1,11 +1,13 @@
 ﻿using AspNetApiPractice.Services.Exceptions;
 using AspNetApiPractice.Services.Shop;
 using AspNetApiPractice.ViewModels.Shop;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetApiPractice.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class ProductsController : ControllerBase
 {
     private readonly IProductService _productService;
@@ -17,6 +19,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public async Task<IActionResult> GetAll([FromQuery] int? categoryId)
     {
         if(categoryId is null)
@@ -26,6 +29,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [AllowAnonymous]
     public async Task<IActionResult> GetById([FromRoute] int id)
     {
         ProductViewModel? prod = await _productService.GetById(id);
