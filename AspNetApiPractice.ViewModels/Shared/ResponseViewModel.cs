@@ -4,24 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AspNetApiPractice.ViewModels.Shared
+namespace AspNetApiPractice.ViewModels.Shared;
+public class ResponseViewModel<T>
 {
-    public class ResponseViewModel<T>
+    public T? Data { get; set; }
+    public string Message { get; set; }
+    public bool Success { get; set; }
+
+    public ResponseViewModel(T? data, string message = "", bool success = true)
     {
-        public T Data { get; set; }
-        public string Message { get; set; }
-        public bool Success { get; set; }
+        Data = data;
+        Success = success;
+        Message = message;
+    }
 
-        public ResponseViewModel(T data, string message = "", bool success = true)
-        {
-            Data = data;
-            Success = success;
-            Message = message;
-        }
-
-        public static ResponseViewModel<object> NotFound(string resourceName, object id)
-        {
-            return new ResponseViewModel<object>(null, $"{resourceName} with id {id} not found", false);
-        }
+    public static ResponseViewModel<object> NotFound(string resourceName, object id)
+    {
+        return new ResponseViewModel<object>(null, $"{resourceName} with id {id} not found", false);
     }
 }
