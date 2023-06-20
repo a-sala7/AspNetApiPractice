@@ -1,6 +1,5 @@
 ﻿using AspNetApiPractice.Data.Repository;
 using AspNetApiPractice.Data.UnitOfWork;
-using AspNetApiPractice.Helpers;
 using AspNetApiPractice.Models.Shop;
 using AspNetApiPractice.Services.Exceptions;
 using AspNetApiPractice.Services.Helpers;
