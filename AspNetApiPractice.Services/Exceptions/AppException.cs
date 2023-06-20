@@ -8,29 +8,12 @@ namespace AspNetApiPractice.Services.Exceptions
 {
     public class AppException : Exception
     {
+        public object? Payload { get; }
         public AppException(string message) : base(message) { }
-        public AppException(params string[] errors) 
-            : base(ConcatenateErrors(errors)) { }
-        public AppException(IEnumerable<string> errors)
-            : base(ConcatenateErrors(errors)) { }
-
-        private static string ConcatenateErrors(params string[] errors)
+        public AppException(object payload, string message = "Something went wrong")
+         : base(message)
         {
-            StringBuilder sb = new StringBuilder();
-            foreach (string error in errors)
-            {
-                sb.AppendLine(error);
-            }
-            return sb.ToString();
-        }
-        private static string ConcatenateErrors(IEnumerable<string> errors)
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (string error in errors)
-            {
-                sb.AppendLine(error);
-            }
-            return sb.ToString();
+            Payload = payload;
         }
     }
 }

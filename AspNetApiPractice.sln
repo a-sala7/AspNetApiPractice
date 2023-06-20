@@ -5,15 +5,15 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetApiPractice.API", "AspNetApiPractice.API\AspNetApiPractice.API.csproj", "{50545C87-0A77-45B5-BB0A-92F730134249}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetApiPractice.Data", "AspNetApiPractice.Data\AspNetApiPractice.Data.csproj", "{82607506-B286-4A06-9770-E5CA6357A1E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetApiPractice.Data", "AspNetApiPractice.Data\AspNetApiPractice.Data.csproj", "{82607506-B286-4A06-9770-E5CA6357A1E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetApiPractice.Models", "AspNetApiPractice.Models\AspNetApiPractice.Models.csproj", "{D7DD9042-8AE9-4EBF-89D0-881FB5031738}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetApiPractice.Models", "AspNetApiPractice.Models\AspNetApiPractice.Models.csproj", "{D7DD9042-8AE9-4EBF-89D0-881FB5031738}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetApiPractice.Helpers", "AspNetApiPractice.Helpers\AspNetApiPractice.Helpers.csproj", "{71A8E3A8-18DC-48CB-9444-1021A6DD6268}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetApiPractice.Helpers", "AspNetApiPractice.Helpers\AspNetApiPractice.Helpers.csproj", "{71A8E3A8-18DC-48CB-9444-1021A6DD6268}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetApiPractice.Services", "AspNetApiPractice.Services\AspNetApiPractice.Services.csproj", "{0539A09F-3DC1-4CAA-BC25-FD97AD8580CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetApiPractice.Services", "AspNetApiPractice.Services\AspNetApiPractice.Services.csproj", "{0539A09F-3DC1-4CAA-BC25-FD97AD8580CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetApiPractice.ViewModels", "AspNetApiPractice.ViewModels\AspNetApiPractice.ViewModels.csproj", "{A49777F7-77C4-4AA4-A33C-DFA2BCF453F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetApiPractice.ViewModels", "AspNetApiPractice.ViewModels\AspNetApiPractice.ViewModels.csproj", "{A49777F7-77C4-4AA4-A33C-DFA2BCF453F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
