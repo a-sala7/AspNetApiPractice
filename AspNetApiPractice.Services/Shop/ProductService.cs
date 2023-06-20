@@ -21,20 +21,29 @@ namespace AspNetApiPractice.Services.Shop
         public async Task<IEnumerable<ProductViewModel>> All()
         {
             var products = await _productRepository.All();
+            return MapAndLocalize(products);
+        }
+        public async Task<IEnumerable<ProductViewModel>> GetByCategory(int categoryId)
+        {
+            var products = await _productRepository.All(c => c.CategoryId == categoryId);
+            return MapAndLocalize(products);
+        }
+
+        private IEnumerable<ProductViewModel> MapAndLocalize(IEnumerable<Product> products)
+        {
             var result = products.Select(p => new ProductViewModel
             {
                 Id = p.Id,
                 CategoryId = p.CategoryId,
                 Price = p.Price,
             }).ToArray();
-            for(int i = 0; i < products.Count(); i++)
-            {
-                LocalizationHelper.LocalizeProperties(
-                    src: products.ElementAt(i), 
-                    target: result[i], 
-                    HttpRequestHelper.GetHeaderValue("lang")
-                );
-            }
+
+            LocalizationHelper.LocalizeProperties(
+                src: products,
+                target: result,
+                HttpRequestHelper.GetHeaderValue("lang")
+            );
+
             return result;
         }
     }

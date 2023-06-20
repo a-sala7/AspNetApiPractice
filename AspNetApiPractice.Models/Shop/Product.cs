@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AspNetApiPractice.Models.Shop
 {
-    public class Product : BaseModel, IBilingual, ILocalizable
+    public class Product : BaseModel, IBilingual
     {
         [Required]
         [MaxLength(200)]

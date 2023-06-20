@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AspNetApiPractice.Models.Interfaces
 {
-    public interface IBilingual
+    public interface IBilingual : ILocalizable
     {
         public string Name_Ar { get; set; }
         public string Name_En { get; set; }

@@ -6,6 +6,19 @@ namespace AspNetApiPractice.Services.Helpers;
 
 public static class LocalizationHelper
 {
+    public static void LocalizeProperties(IEnumerable<ILocalizable> src,
+        object[] target, string langCode)
+    {
+        if (src is null || target is null)
+            return;
+        if (string.IsNullOrEmpty(langCode))
+            langCode = "en";
+
+        for(int i = 0; i < src.Count(); i++)
+        {
+            LocalizeProperties(src.ElementAt(i), target[i], langCode);
+        }
+    }
     public static void LocalizeProperties(ILocalizable src, object target, string langCode)
     {
         if (src is null || target is null)
