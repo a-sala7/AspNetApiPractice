@@ -42,4 +42,17 @@ public class ProductsController : ControllerBase
         var addedProduct = await _productService.Add(command);
         return CreatedAtAction("GetById", new { id = addedProduct.Id }, addedProduct);
     }
+
+    [HttpPut]
+    public async Task<IActionResult> Edit(EditProductCommand command)
+    {
+        return Ok(await _productService.Edit(command));
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        await _productService.Delete(id);
+        return Ok();
+    }
 }

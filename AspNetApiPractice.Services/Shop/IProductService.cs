@@ -8,4 +8,6 @@ public interface IProductService
     Task<IEnumerable<ProductViewModel>> GetByCategory(int categoryId);
     Task<ProductViewModel?> GetById(int id);
     Task<ProductViewModel> Add(CreateProductCommand command);
+    Task<ProductViewModel> Edit(EditProductCommand command);
+    Task Delete(int id);
 }

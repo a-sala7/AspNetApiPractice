@@ -71,7 +71,26 @@ public class ProductService : IProductService
         var newProd = _productRepository.Add(p);
         await _unitOfWork.SaveChangesAsync();
         var productViewModel = MappingExpression.Invoke(newProd);
-        LocalizationHelper.LocalizeProperties(newProd, productViewModel, HttpRequestHelper.GetHeaderValue("lang"));
+        LocalizationHelper.LocalizeProperties(newProd, productViewModel);
+        return productViewModel;
+    }
+
+    public async Task<ProductViewModel> Edit(EditProductCommand command)
+    {
+        Product? prodInDb = await _productRepository.GetById(command.Id);
+        if(prodInDb is null)
+            throw new NotFoundException("Product", command.Id);
+
+        prodInDb.Name_Ar = command.Name_Ar;
+        prodInDb.Name_En = command.Name_En;
+        prodInDb.Description_Ar = command.Description_Ar;
+        prodInDb.Description_En = command.Description_En;
+        prodInDb.Price = command.Price;
+        prodInDb.CategoryId = command.CategoryId;
+        
+        await _unitOfWork.SaveChangesAsync();
+        var productViewModel = MappingExpression.Invoke(prodInDb);
+        LocalizationHelper.LocalizeProperties(prodInDb, productViewModel);
         return productViewModel;
     }
 
@@ -84,5 +103,15 @@ public class ProductService : IProductService
         var productViewModel = MappingExpression.Invoke(prod);
         LocalizationHelper.LocalizeProperties(prod, productViewModel);
         return productViewModel;
+    }
+
+    public async Task Delete(int id)
+    {
+        Product? product = await _productRepository.GetById(id);
+        if(product is null)
+            throw new NotFoundException("Product", id);
+
+        _productRepository.Delete(product);
+        await _unitOfWork.SaveChangesAsync();
     }
 }
