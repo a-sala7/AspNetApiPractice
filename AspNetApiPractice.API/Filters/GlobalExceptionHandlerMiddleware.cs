@@ -25,7 +25,7 @@ namespace AspNetApiPractice.API.Filters
             {
                 context.Response.StatusCode = (int)HttpStatusCode.NotFound;
                 var response = new ResponseViewModel<object>
-                        (null, ex.Message, success: false);
+                        (data: null, ex.Message, success: false);
                 await context.Response.WriteAsJsonAsync(response);
             }
             catch (AppException ex)
@@ -33,13 +33,13 @@ namespace AspNetApiPractice.API.Filters
                 context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 if(ex.Payload is not null)
                 {
-                    var response = new ResponseViewModel<object>(ex.Payload, message: ex.Message, success: false);
+                    var response = new ResponseViewModel<object>(data: ex.Payload, message: ex.Message, success: false);
                     await context.Response.WriteAsJsonAsync(response);
                 }
                 else
                 {
-                    var response = new ResponseViewModel<string>
-                            (ex.Message, success: false);
+                    var response = new ResponseViewModel<object>
+                            (data:null, ex.Message, success: false);
                     await context.Response.WriteAsJsonAsync(response);
                 }
             }
@@ -48,8 +48,8 @@ namespace AspNetApiPractice.API.Filters
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 _logger.LogError(ex, ex.Message);
 
-                var response = new ResponseViewModel<string>
-                        ("Something went wrong", success: false);
+                var response = new ResponseViewModel<object>
+                        (data:null, "Something went wrong", success: false);
                 await context.Response.WriteAsJsonAsync(response);
             }
         }

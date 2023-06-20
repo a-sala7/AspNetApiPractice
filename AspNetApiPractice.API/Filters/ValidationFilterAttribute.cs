@@ -18,7 +18,7 @@ class ValidationFilterAttribute : IActionFilter
             var formValidationErrors = FormValidationError.FromDictionary(dict);
             
             var response = new ResponseViewModel
-                <IEnumerable<FormValidationError>>(formValidationErrors, success: false);
+                <IEnumerable<FormValidationError>>(formValidationErrors, "Something went wrong", success: false);
             context.Result = new BadRequestObjectResult(response);
         }
     }
