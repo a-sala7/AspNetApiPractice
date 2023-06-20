@@ -1,5 +1,6 @@
 using AspNetApiPractice.Data.Repository;
 using AspNetApiPractice.Data.Repository.Shop;
+using AspNetApiPractice.Data.UnitOfWork;
 using AspNetApiPractice.Models;
 using AspNetApiPractice.Models.Shop;
 using AspNetApiPractice.Services.Shop;
@@ -11,6 +12,8 @@ public static class RepositoryAndServiceConfig
 {
     public static void AddRepositoriesAndServices(this IServiceCollection services)
     {
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+
         services.AddScoped<IRepository<Product>, ProductRepository>();
         services.AddScoped<IProductService, ProductService>();
 

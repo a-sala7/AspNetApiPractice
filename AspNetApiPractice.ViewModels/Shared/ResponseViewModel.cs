@@ -17,9 +17,4 @@ public class ResponseViewModel<T>
         Success = success;
         Message = message;
     }
-
-    public static ResponseViewModel<object> NotFound(string resourceName, object id)
-    {
-        return new ResponseViewModel<object>(null, $"{resourceName} with id {id} not found", false);
-    }
 }

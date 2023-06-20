@@ -25,8 +25,7 @@ public class CategoryService : ICategoryService
 
         LocalizationHelper.LocalizeProperties(
             src: categories, 
-            target: result, 
-            HttpRequestHelper.GetHeaderValue("lang")
+            target: result
         );
 
         return result;

@@ -1,16 +1,18 @@
-﻿using AspNetApiPractice.Models.Interfaces;
-using System.Reflection;
-using System.Text.RegularExpressions;
+﻿using AspNetApiPractice.Helpers;
+using AspNetApiPractice.Models.Interfaces;
 
 namespace AspNetApiPractice.Services.Helpers;
 
 public static class LocalizationHelper
 {
     public static void LocalizeProperties(IEnumerable<ILocalizable> src,
-        object[] target, string langCode)
+        object[] target)
     {
         if (src is null || target is null)
             return;
+        
+        var langCode = HttpRequestHelper.GetHeaderValue("lang");
+        
         if (string.IsNullOrEmpty(langCode))
             langCode = "en";
 
@@ -23,8 +25,33 @@ public static class LocalizationHelper
     {
         if (src is null || target is null)
             return;
+                
         if (string.IsNullOrEmpty(langCode))
             langCode = "en";
+
+        var srcType = src.GetType();
+        var targetType = target.GetType();
+        var localizablePropsFromSource =
+            srcType
+            .GetProperties()
+            .Where(p => p.Name.ToLower().EndsWith('_' + langCode));
+
+        foreach(var prop in localizablePropsFromSource)
+        {
+            targetType?
+                .GetProperty(GetUnlocalizedPropName(prop.Name))?
+                .SetValue(target, prop.GetValue(src));
+        }
+    }
+
+    public static void LocalizeProperties(ILocalizable src, object target)
+    {
+        string langCode = HttpRequestHelper.GetHeaderValue("lang");    
+        if (string.IsNullOrEmpty(langCode))
+            langCode = "en";
+
+        if (src is null || target is null)
+            return;
 
         var srcType = src.GetType();
         var targetType = target.GetType();

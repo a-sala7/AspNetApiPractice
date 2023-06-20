@@ -21,6 +21,13 @@ namespace AspNetApiPractice.API.Filters
             {
                 await next.Invoke(context);
             }
+            catch(NotFoundException ex)
+            {
+                context.Response.StatusCode = (int)HttpStatusCode.NotFound;
+                var response = new ResponseViewModel<object>
+                        (null, ex.Message, success: false);
+                await context.Response.WriteAsJsonAsync(response);
+            }
             catch (AppException ex)
             {
                 context.Response.StatusCode = (int)HttpStatusCode.BadRequest;

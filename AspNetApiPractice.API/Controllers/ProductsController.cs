@@ -1,5 +1,6 @@
-﻿using AspNetApiPractice.Services.Shop;
-using AspNetApiPractice.ViewModels.Shared;
+﻿using AspNetApiPractice.Services.Exceptions;
+using AspNetApiPractice.Services.Shop;
+using AspNetApiPractice.ViewModels.Shop;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetApiPractice.API.Controllers;
@@ -21,11 +22,24 @@ public class ProductsController : ControllerBase
         if(categoryId is null)
             return Ok(await _productService.All());
 
-        if((await _categoryService.All()).Any(c => c.Id == categoryId) == false)
-            return NotFound(
-                ResponseViewModel<object>.NotFound("category", categoryId.Value)
-            );
-
         return Ok(await _productService.GetByCategory(categoryId.Value));
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById([FromRoute] int id)
+    {
+        ProductViewModel? prod = await _productService.GetById(id);
+        if(prod is null){
+            throw new NotFoundException("Product", id);
+        }
+
+        return Ok(prod);
+    }
+
+    [HttpPost]
+    public async Task <IActionResult> Create(CreateProductCommand command)
+    {
+        var addedProduct = await _productService.Add(command);
+        return CreatedAtAction("GetById", new { id = addedProduct.Id }, addedProduct);
     }
 }
