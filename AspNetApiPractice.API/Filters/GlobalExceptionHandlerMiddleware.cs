@@ -3,7 +3,7 @@ using AspNetApiPractice.ViewModels.Shared;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace AspNetApiPractice.API.Middleware
+namespace AspNetApiPractice.API.Filters
 {
     public class GlobalExceptionHandlerMiddleware : IMiddleware
     {

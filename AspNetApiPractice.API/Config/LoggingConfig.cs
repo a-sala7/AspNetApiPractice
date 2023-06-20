@@ -2,7 +2,7 @@
 
 namespace AspNetApiPractice.API.Config
 {
-    public static class Logging
+    public static class LoggingConfig
     {
         public static void AddSerilogLogging(this WebApplicationBuilder builder)
         {

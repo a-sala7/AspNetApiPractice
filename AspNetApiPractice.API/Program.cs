@@ -1,5 +1,5 @@
 ﻿using AspNetApiPractice.API.Config;
-using AspNetApiPractice.API.Middleware;
+using AspNetApiPractice.API.Filters;
 using AspNetApiPractice.API.Utility;
 using AspNetApiPractice.Data;
 using AspNetApiPractice.Data.Repository;
@@ -8,7 +8,9 @@ using AspNetApiPractice.Models.Shop;
 using AspNetApiPractice.Models.User;
 using AspNetApiPractice.Services.Shop;
 using AspNetApiPractice.Services.User;
+using AspNetApiPractice.ViewModels.Shared;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.AddSerilogLogging();
 
-builder.Services.AddControllers();
+builder.Services.ConfigureControllersWithModelValidation();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
