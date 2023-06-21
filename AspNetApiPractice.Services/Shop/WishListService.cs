@@ -69,6 +69,6 @@ public class WishListService : IWishListService
             throw new AppException("Product not in wishlist");
 
         _wishlistsProductsRepository.Delete(itemToDelete);
-        _unitOfWork.SaveChangesAsync();
+        await _unitOfWork.SaveChangesAsync();
     }
 }
