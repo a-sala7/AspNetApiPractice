@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetApiPractice.Services"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetApiPractice.ViewModels", "AspNetApiPractice.ViewModels\AspNetApiPractice.ViewModels.csproj", "{A49777F7-77C4-4AA4-A33C-DFA2BCF453F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetApiPractice.Tests", "AspNetApiPractice.Tests\AspNetApiPractice.Tests.csproj", "{FB6AB551-672F-49A8-B4B1-332DDABF3D00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{A49777F7-77C4-4AA4-A33C-DFA2BCF453F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A49777F7-77C4-4AA4-A33C-DFA2BCF453F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A49777F7-77C4-4AA4-A33C-DFA2BCF453F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB6AB551-672F-49A8-B4B1-332DDABF3D00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB6AB551-672F-49A8-B4B1-332DDABF3D00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB6AB551-672F-49A8-B4B1-332DDABF3D00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB6AB551-672F-49A8-B4B1-332DDABF3D00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
