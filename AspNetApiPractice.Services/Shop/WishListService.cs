@@ -1,4 +1,5 @@
 using AspNetApiPractice.Data.Repository;
+using AspNetApiPractice.Data.Repository.User;
 using AspNetApiPractice.Data.UnitOfWork;
 using AspNetApiPractice.Models.Shop;
 using AspNetApiPractice.Models.User;
@@ -12,6 +13,7 @@ public class WishListService : IWishListService
 {
     private readonly IRepository<WishlistsProducts> _wishlistsProductsRepository;
     private readonly IRepository<Product> _productRepository;
+    private readonly IUserRepository _userRepository;
     private readonly IUnitOfWork _unitOfWork;
     private static Func<Product, ProductViewModel> MappingExpression = p => new ProductViewModel {
         Id = p.Id,
@@ -21,15 +23,23 @@ public class WishListService : IWishListService
 
     public WishListService(IRepository<WishlistsProducts> wishlistsProductsRepository,
         IRepository<Product> productRepository,
-        IUnitOfWork unitOfWork)
+        IUnitOfWork unitOfWork,
+        IUserRepository userRepository)
     {
         _wishlistsProductsRepository = wishlistsProductsRepository;
         _productRepository = productRepository;
         _unitOfWork = unitOfWork;
+        _userRepository = userRepository;
     }
 
     public async Task AddProduct(string userId, int productId)
     {
+        await CheckIfUserFoundElseThrow(userId);
+
+        bool productExists = (await _productRepository.GetById(productId)) != null;
+        if (!productExists)
+            throw new NotFoundException("product", productId);
+
         bool alreadyInWishList = (await _wishlistsProductsRepository
                 .All(x => x.UserId == userId && x.ProductId == productId)
             ).Any();
@@ -47,6 +57,8 @@ public class WishListService : IWishListService
 
     public async Task<WishListViewModel> GetWishList(string userId)
     {
+        await CheckIfUserFoundElseThrow(userId);
+
         IEnumerable<int> prodIds = (await _wishlistsProductsRepository.All(x => x.UserId == userId)).Select(x => x.ProductId);
         IEnumerable<Product> products = await _productRepository.All(p => prodIds.Contains(p.Id));
         ProductViewModel[] result = products.Select(MappingExpression).ToArray();
@@ -61,6 +73,8 @@ public class WishListService : IWishListService
 
     public async Task RemoveProduct(string userId, int productId)
     {
+        await CheckIfUserFoundElseThrow(userId);
+
         WishlistsProducts? itemToDelete = (await _wishlistsProductsRepository
                 .All(x => x.UserId == userId && x.ProductId == productId)
             ).FirstOrDefault();
@@ -70,5 +84,13 @@ public class WishListService : IWishListService
 
         _wishlistsProductsRepository.Delete(itemToDelete);
         await _unitOfWork.SaveChangesAsync();
+    }
+
+    private async Task CheckIfUserFoundElseThrow(string userId)
+    {
+        if(await _userRepository.Exists(userId) == false)
+        {
+            throw new NotFoundException("user", userId);
+        }
     }
 }

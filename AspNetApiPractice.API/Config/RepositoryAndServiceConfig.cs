@@ -1,6 +1,8 @@
+
 using AspNetApiPractice.API.Utility;
 using AspNetApiPractice.Data.Repository;
 using AspNetApiPractice.Data.Repository.Shop;
+using AspNetApiPractice.Data.Repository.User;
 using AspNetApiPractice.Data.UnitOfWork;
 using AspNetApiPractice.Models.Shop;
 using AspNetApiPractice.Models.User;
@@ -24,6 +26,7 @@ public static class RepositoryAndServiceConfig
         services.AddScoped<IRepository<WishlistsProducts>, Repository<WishlistsProducts>>();
         services.AddScoped<IWishListService, WishListService>();
 
+        services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserService, UserService>();
         
         services.AddScoped<IUserIdProvider, UserIdProvider>();
